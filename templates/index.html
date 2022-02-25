@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+   <div class="main">
+
+    <header>
+        <h1>Message Caller</h1>
+        <h3>Enter a number to send a message</h3>
+    </header>
+
+    <div class="call-input">
+    
+        <form id="call-form" action="send" method="POST" > 
+        <input name="tel-input" type="tel" placeholder="555-555-5555">
+        <button type="submit">Send</button>
+
+
+    </form>
+
+    {% if data %}
+
+    <p>{{  data.success  }} </p>
+
+    {% endif %}
+        
+
+    </div>
+
+    </div>
+    
+</body>
+</html>
