@@ -17,22 +17,31 @@ def index():
 def send_message():
 
     print("Sending message")
-    number = request.form["tel-input"]
-    print(number)
+    recipient_number = request.form["tel-input"]
+    message_body = request.form["message-input"]
+    prefix = "+1"
+    #print(number)
 
     #Adding a simple message
-    message = "I Love you bebe !! - Paco"
-    number = "+19252340221"
+    message = message_body
+    number = prefix+recipient_number
     print(f"message: {message}")
     #make the request
 
     #read about securing tokens in environment variables:
     # https://www.twilio.com/docs/usage/secure-credentials
-
+    print("ID: ")
+    print(os.environ['TWILIO_ACCT_ID'])
     
     twilio_acct_id = os.environ['TWILIO_ACCT_ID']
     twilio_phone_number = os.environ['TWILIO_PHONE_NUMBER']
     twilio_auth_token = os.environ['TWILIO_AUTH_TOKEN']
+    print(twilio_auth_token)
+
+    #twilio_acct_id = 'AC7dc9522a056142318ab0305ae59473dc'
+    #twilio_phone_number = '+14143124358'
+    #twilio_auth_token = 'a935012752d6cc6f60c71f2860ffb078'
+
 
     client = Client(twilio_acct_id, twilio_auth_token)
 
