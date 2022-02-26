@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import requests
+import os
 from twilio.rest import Client
 
 
@@ -25,9 +26,13 @@ def send_message():
     print(f"message: {message}")
     #make the request
 
-    twilio_acct_id = "AC7dc9522a056142318ab0305ae59473dc"
-    twilio_phone_number = "+14143124358"
-    twilio_auth_token = "1e2fee921ef7a2e50a14373c372dbdeb"
+    #read about securing tokens in environment variables:
+    # https://www.twilio.com/docs/usage/secure-credentials
+
+    
+    twilio_acct_id = os.environ['TWILIO_ACCT_ID']
+    twilio_phone_number = os.environ['TWILIO_PHONE_NUMBER']
+    twilio_auth_token = os.environ['TWILIO_AUTH_TOKEN']
 
     client = Client(twilio_acct_id, twilio_auth_token)
 
